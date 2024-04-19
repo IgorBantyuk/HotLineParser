@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Пошук</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "@material/web/": "https://esm.run/@material/web/"
+          }
+        }
+    </script>
+    <script type="module">
+        import '@material/web/all.js';
+        import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+    </script>
+<!--    <script>-->
+<!--    document.addEventListener("DOMContentLoaded", function() {-->
+<!--    var downloadFileName = "${downloadFileName}";-->
+<!--    var downloadLink = document.getElementById("downloadLink");-->
+<!--    var encodedFileName = encodeURIComponent(downloadFileName);-->
+<!--    downloadLink.href = "/download?fileName=" + encodedFileName;-->
+<!--    });-->
+<!--    </script>-->
+</head>
+<body>
+<figure style="border: none; background-color: #393334; padding: 20px; margin: 10px;">
+<div>
+    <h1>Результат пошуку</h1>
+    <p>Запит: <span th:text="${query}"></span></p>
+    <p>Кількість: <span th:text="${count}"></span></p>
+</div>
+    <div class="buttons" style="display: ruby">
+          <form id="back" action="/application" method="get">
+              <md-filled-tonal-button type="submit">Назад</md-filled-tonal-button>
+          </form>
+          <form action="/download" method="get" >
+              <input type="hidden" name="fileName" th:value="${fileName}" />
+              <md-filled-tonal-button type="submit" trailing-icon>
+                  <span class="material-symbols-outlined">download</span>
+              </md-filled-tonal-button>
+          </form>
+    </div>
+</figure>
+</body>
+<style>
+    :root,:host{--md-sys-color-background:#171213;
+        --md-sys-color-on-background:#ebe0e1;
+        --md-sys-color-surface:#171213;
+        --md-sys-color-surface-dim:#171213;
+        --md-sys-color-surface-bright:#3e3839;
+        --md-sys-color-surface-container-lowest:#110d0e;
+        --md-sys-color-surface-container-low:#1f1a1b;
+        --md-sys-color-surface-container:#231e1f;
+        --md-sys-color-surface-container-high:#2e292a;
+        --md-sys-color-surface-container-highest:#393334;
+        --md-sys-color-on-surface:#ebe0e1;
+        --md-sys-color-surface-variant:#504347;
+        --md-sys-color-on-surface-variant:#d5c2c6;
+        --md-sys-color-inverse-surface:#ebe0e1;
+        --md-sys-color-inverse-on-surface:#352f30;
+        --md-sys-color-outline:#9d8d90;
+        --md-sys-color-outline-variant:#504347;
+        --md-sys-color-shadow:#000000;
+        --md-sys-color-scrim:#000000;
+        --md-sys-color-surface-tint:#f6b5c8;
+        --md-sys-color-primary:#fff3f4;
+        --md-sys-color-on-primary:#4d2232;
+        --md-sys-color-primary-container:#fbb9cc;
+        --md-sys-color-on-primary-container:#582b3b;
+        --md-sys-color-inverse-primary:#834f60;
+        --md-sys-color-secondary:#dfbec6;
+        --md-sys-color-on-secondary:#402a31;
+        --md-sys-color-secondary-container:#4e373e;
+        --md-sys-color-on-secondary-container:#eac9d1;
+        --md-sys-color-tertiary:#fff3ec;
+        --md-sys-color-on-tertiary:#4a2803;
+        --md-sys-color-tertiary-container:#f9c08d;
+        --md-sys-color-on-tertiary-container:#55310a;
+        --md-sys-color-error:#ffb4ab;
+        --md-sys-color-on-error:#690005;
+        --md-sys-color-error-container:#93000a;
+        --md-sys-color-on-error-container:#ffdad6;
+        --md-circular-progress-size: 40px;
+        --md-circular-progress-active-indicator-width: 20;
+
+
+    }
+
+    .touch{
+        position: relative;
+    }
+
+    md-filled-tonal-button{
+        height: 20px;
+    }
+
+    h1{
+        padding: 0;
+        margin: 0 0 10px 0;
+    }
+
+    p{
+        font-size: 20px;
+    }
+
+    body {
+        width: 500px;
+        height: 800px;
+        margin: 10px auto;
+        font-family: "Product Sans",sans-serif;
+        background: #5d474b;
+        color:#ebe0e1 ;
+    }
+
+
+    figure {
+        width: 471px;
+        border: 1px solid;
+        border-radius: 20px;
+        padding-inline: 28px;
+        align-items: center;
+        margin: 0 50px 10px 50px;
+    }
+
+
+    form{
+        width: min-content;
+    }
+
+
+    label {
+        gap: 0;
+    }
+
+    .download {
+        padding: 0;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+    }
+</style>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Пошук</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "@material/web/": "https://esm.run/@material/web/"
+          }
+        }
+    </script>
+    <script type="module">
+        import '@material/web/all.js';
+        import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+    </script>
+    <script>
+        if(document.querySelector('#search-input').onclick == true && document.querySelector('#query').val("") && document.querySelector('#count').val(""))
+        {
+            document.querySelector('#if-not-value').style.display = "block";
+
+        }
+    </script>
+</head>
+<body>
+<figure style="justify-content:center;display: table-cell;border: none; background-color: #393334; padding: 20px; margin: 10px;">
+    <h1 class="md-typescale-display-medium">HotLine Parser</h1>
+
+    <form action="/getResult" method="post">
+        <md-outlined-text-field id="query" name="query" type="text" label="Пошук" ></md-outlined-text-field>
+        <md-outlined-text-field id="count" name="count" type="number" label="Кількість" ></md-outlined-text-field>
+        <p class="md-typescale-body-medium">Введіть бажану річ у поле пошуку!</p>
+        <div th:if="${errorMessage}" class="error-message">
+            <p th:text="${errorMessage}">Введіть значення</p>
+        </div>
+        <md-filled-tonal-button type = "submit" id="search-input">Сформувати запит</md-filled-tonal-button>
+    </form>
+    <md-circular-progress id="progress" style="display: none" indeterminate></md-circular-progress>
+</figure>
+
+<script>
+    document.querySelector('#search-input').onclick = function () {
+        document.querySelector('#progress').style.display = "inline-block";
+    }
+</script>
+<style>
+    :root,:host{--md-sys-color-background:#171213;
+        --md-sys-color-on-background:#ebe0e1;
+        --md-sys-color-surface:#171213;
+        --md-sys-color-surface-dim:#171213;
+        --md-sys-color-surface-bright:#3e3839;
+        --md-sys-color-surface-container-lowest:#110d0e;
+        --md-sys-color-surface-container-low:#1f1a1b;
+        --md-sys-color-surface-container:#231e1f;
+        --md-sys-color-surface-container-high:#2e292a;
+        --md-sys-color-surface-container-highest:#393334;
+        --md-sys-color-on-surface:#ebe0e1;
+        --md-sys-color-surface-variant:#504347;
+        --md-sys-color-on-surface-variant:#d5c2c6;
+        --md-sys-color-inverse-surface:#ebe0e1;
+        --md-sys-color-inverse-on-surface:#352f30;
+        --md-sys-color-outline:#9d8d90;
+        --md-sys-color-outline-variant:#504347;
+        --md-sys-color-shadow:#000000;
+        --md-sys-color-scrim:#000000;
+        --md-sys-color-surface-tint:#f6b5c8;
+        --md-sys-color-primary:#fff3f4;
+        --md-sys-color-on-primary:#4d2232;
+        --md-sys-color-primary-container:#fbb9cc;
+        --md-sys-color-on-primary-container:#582b3b;
+        --md-sys-color-inverse-primary:#834f60;
+        --md-sys-color-secondary:#dfbec6;
+        --md-sys-color-on-secondary:#402a31;
+        --md-sys-color-secondary-container:#4e373e;
+        --md-sys-color-on-secondary-container:#eac9d1;
+        --md-sys-color-tertiary:#fff3ec;
+        --md-sys-color-on-tertiary:#4a2803;
+        --md-sys-color-tertiary-container:#f9c08d;
+        --md-sys-color-on-tertiary-container:#55310a;
+        --md-sys-color-error:#ffb4ab;
+        --md-sys-color-on-error:#690005;
+        --md-sys-color-error-container:#93000a;
+        --md-sys-color-on-error-container:#ffdad6;
+        --md-circular-progress-size: 40px;
+        --md-circular-progress-active-indicator-width: 20;
+
+
+    }
+
+    .touch{
+        position: relative;
+    }
+
+    md-filled-tonal-button{
+        height: 20px;
+    }
+
+    h1{
+        padding: 0;
+        margin: 0 0 10px 0;
+    }
+
+    body {
+        width: 500px;
+        height: 800px;
+        margin: 10px auto;
+        font-family: "Product Sans",sans-serif;
+        background: #5d474b;
+        color:#ebe0e1 ;
+    }
+
+    form {
+        display: contents;
+    }
+    figure {
+        border: 1px solid;
+        border-radius: 20px;
+        display: flex;
+        padding-inline: 28px;
+        align-items: center;
+        margin: 0 50px 10px 50px;
+    }
+
+
+    label {
+        gap: 0;
+    }
+
+    .download {
+        padding: 0;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+    }
+</style>
+
+</body>
+</html>
